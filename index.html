@@ -1,0 +1,762 @@
+<html><head><base href="https://abdussalam-sultan.com">
+<title>Abdussalam Sultan - Interactive Resume</title>
+<style>
+  :root {
+    --bg-color: #f6f8fa;
+    --text-color: #2c3e50;
+    --accent-color: #3498db;
+    --secondary-color: #ffffff;
+    --highlight-color: #ecf0f1;
+    --chart-color-1: #1abc9c;
+    --chart-color-2: #3498db;
+    --chart-color-3: #9b59b6;
+    --chart-color-4: #e74c3c;
+    --chart-color-5: #e67e22;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    transition: all 0.5s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 50px;
+  }
+
+  header {
+    grid-column: 1 / -1;
+    text-align: left;
+    margin-bottom: 60px;
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 40px;
+    border: 4px solid var(--accent-color);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .header-content {
+    flex-grow: 1;
+  }
+
+  h1 {
+    color: var(--accent-color);
+    font-size: 3em;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+  }
+
+  .contact-info {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: var(--text-color);
+  }
+
+  .sidebar {
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .main-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .section {
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+  }
+
+  .section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+
+  h2 {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2em;
+  }
+
+  ul {
+    padding-left: 25px;
+    margin-bottom: 25px;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  .skills-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .skill-bar {
+    background-color: var(--highlight-color);
+    border-radius: 15px;
+    height: 25px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .skill-progress {
+    height: 100%;
+    border-radius: 15px;
+    transition: width 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    white-space: nowrap;
+    overflow: visible;
+    position: relative;
+    z-index: 2;
+  }
+
+  .project-card {
+    background-color: var(--highlight-color);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .project-title {
+    font-size: 1.4em;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  .project-description {
+    font-size: 1em;
+    line-height: 1.6;
+  }
+
+  .interests-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .interest-item {
+    background-color: var(--highlight-color);
+    color: var(--text-color);
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+  }
+
+  .interest-item:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .header-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+  }
+
+  .mode-toggle, .about-link, .gallery-link {
+    background-color: var(--highlight-color);
+    border: none;
+    color: var(--text-color);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+
+  .mode-toggle:hover, .about-link:hover, .gallery-link:hover {
+    background-color: var(--accent-color);
+    color: white;
+  }
+
+  .mode-toggle i, .about-link i, .gallery-link i {
+    margin-right: 8px;
+  }
+
+  .dark-mode {
+    --bg-color: #08080e;
+    --text-color: #e0e0e0;
+    --accent-color: #6c5ce7;
+    --secondary-color: #1c1c2a;
+    --highlight-color: #2d2d3f;
+    --chart-color-1: #00b894;
+    --chart-color-2: #0984e3;
+    --chart-color-3: #6c5ce7;
+    --chart-color-4: #d63031;
+    --chart-color-5: #fdcb6e;
+  }
+
+  .dark-mode .section,
+  .dark-mode .sidebar,
+  .dark-mode header {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+
+  .dark-mode .project-card {
+    background-color: #252536;
+  }
+
+  .dark-mode .interest-item {
+    background-color: #252536;
+  }
+
+  .dark-mode .skill-bar {
+    background-color: #252536;
+  }
+
+  #about-section, #gallery-section {
+    display: none;
+    grid-column: 1 / -1;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .gallery-item {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    background-color: var(--secondary-color);
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: all 0.3s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+
+  .gallery-item-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    transform: translateY(100%);
+  }
+
+  .gallery-item:hover .gallery-item-title {
+    transform: translateY(0);
+  }
+
+  .fullscreen-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .fullscreen-image.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .fullscreen-image img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .close-fullscreen {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .close-fullscreen:hover {
+    transform: rotate(90deg);
+  }
+
+  .fullscreen-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .fullscreen-nav:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .fullscreen-prev {
+    left: 20px;
+  }
+
+  .fullscreen-next {
+    right: 20px;
+  }
+
+  .fullscreen-title {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 1100px) {
+    .container {
+      grid-template-columns: 1fr;
+    }
+    .main-content {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      padding: 30px 20px;
+    }
+    .section {
+      padding: 30px;
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+    h2 {
+      font-size: 1.8em;
+    }
+    .header-controls {
+      position: static;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .profile-image {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+    .header-content {
+      width: 100%;
+    }
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+    .fullscreen-nav {
+      font-size: 30px;
+      width: 50px;
+      height: 50px;
+    }
+    .fullscreen-title {
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="https://picsum.photos/200" alt="Abdussalam Sultan profile picture" class="profile-image" width="120" height="120">
+      <div class="header-content">
+        <h1>Abdussalam Sultan</h1>
+        <div class="contact-info">
+          <p>abdussultan14@gmail.com | Abeokuta, Ogun State, Nigeria</p>
+        </div>
+      </div>
+      <div class="header-controls">
+        <button id="about-link" class="about-link">
+          <i class="fas fa-user"></i>
+          About Me
+        </button>
+        <button id="gallery-link" class="gallery-link">
+          <i class="fas fa-images"></i>
+          Gallery
+        </button>
+        <button id="mode-toggle" class="mode-toggle">
+          <i class="fas fa-sun"></i>
+          Light Mode
+        </button>
+      </div>
+    </header>
+
+    <div id="about-section" class="section">
+      <h2>About Me</h2>
+      <p>Hello! I'm Abdussalam Sultan, a passionate computer science student and aspiring software developer. My journey in the world of technology began with a fascination for how computers work and has evolved into a deep love for programming and problem-solving.</p>
+      <p>I'm currently pursuing my Bachelor's degree in Computer Science at Obafemi Awolowo University, where I'm constantly expanding my knowledge and skills. My primary focus is on C# programming, but I'm always eager to learn new technologies and programming languages.</p>
+      <p>Outside of my academic pursuits, I enjoy working on personal projects that challenge me and allow me to apply my skills in practical ways. I'm particularly interested in game development, artificial intelligence, and creating intuitive user interfaces.</p>
+      <p>When I'm not coding, you can find me exploring the latest trends in technology, contributing to open-source projects, or sharing my knowledge with others through tutoring and coding workshops. I believe in the power of community and collaboration in the tech world, and I'm always looking for opportunities to connect with like-minded individuals and learn from their experiences.</p>
+      <p>My goal is to become a versatile and innovative software developer, capable of creating solutions that make a positive impact on people's lives. I'm excited about the future of technology and can't wait to be a part of shaping it!</p>
+    </div>
+
+    <div id="gallery-section" class="section">
+      <h2>My Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://picsum.photos/400/300?random=1" alt="Scenic Landscape" width="400" height="300">
+          <div class="gallery-item-title">Scenic Landscape</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://picsum.photos/400/300?random=2" alt="Urban Architecture" width="400" height="300">
+          <div class="gallery-item-title">Urban Architecture</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://picsum.photos/400/300?random=3" alt="Nature Close-up" width="400" height="300">
+          <div class="gallery-item-title">Nature Close-up</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://picsum.photos/400/300?random=4" alt="Abstract Art" width="400" height="300">
+          <div class="gallery-item-title">Abstract Art</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://picsum.photos/400/300?random=5" alt="Portrait Study" width="400" height="300">
+          <div class="gallery-item-title">Portrait Study</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://picsum.photos/400/300?random=6" alt="Tech Illustration" width="400" height="300">
+          <div class="gallery-item-title">Tech Illustration</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fullscreen-image">
+      <span class="close-fullscreen">&times;</span>
+      <img src="" alt="Fullscreen image">
+      <div class="fullscreen-prev fullscreen-nav"><i class="fas fa-chevron-left"></i></div>
+      <div class="fullscreen-next fullscreen-nav"><i class="fas fa-chevron-right"></i></div>
+      <div class="fullscreen-title"></div>
+    </div>
+
+    <div class="sidebar">
+      <div class="section">
+        <h2>Summary</h2>
+        <p>Aspiring software developer and computer science student with a strong foundation in C# programming. Passionate about creating polished projects from scratch and exploring innovative technologies.</p>
+      </div>
+
+      <div class="section">
+        <h2>Education</h2>
+        <h3>Obafemi Awolowo University (OAU)</h3>
+        <p>Bachelor of Science in Computer Science</p>
+        <p>Expected Graduation: 2030</p>
+      </div>
+
+      <div class="section">
+        <h2>Certifications</h2>
+        <ul>
+          <li>Foundational C# with Microsoft Developer Certification (September 2023)</li>
+          <ul>
+            <li>Completed approximately 300 hours of work</li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="section">
+        <h2>Skills</h2>
+        <div class="skills-chart">
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 90%; background-color: var(--chart-color-1);">C#</div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 75%; background-color: var(--chart-color-2);">Game Development</div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 80%; background-color: var(--chart-color-3);">Digital Painting</div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 85%; background-color: var(--chart-color-4);">Problem Solving</div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 88%; background-color: var(--chart-color-5);">Programming</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Projects</h2>
+        <div class="project-card">
+          <div class="project-title">C# Console Game</div>
+          <div class="project-description">Developed a text-based adventure game using C# and object-oriented programming principles. Implemented user input handling, game state management, and basic AI for non-player characters.</div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Digital Art Portfolio Website</div>
+          <div class="project-description">Created a responsive website to showcase digital paintings using HTML, CSS, and JavaScript. Implemented a gallery feature with lightbox functionality for image viewing.</div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Student Management System</div>
+          <div class="project-description">Developed a C# application for managing student records, including features for adding, updating, and searching student information. Utilized file I/O for data persistence.</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Interests</h2>
+        <div class="interests-container">
+          <div class="interest-item">Artificial Intelligence</div>
+          <div class="interest-item">3D Modelling</div>
+          <div class="interest-item">Internet of Things</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Additional Information</h2>
+        <ul>
+          <li>Member of the OAU Computer Science Club</li>
+          <li>Participated in the 2023 Google Africa Developer Scholarship program</li>
+          <li>Volunteer instructor for local youth coding workshops</li>
+          <li>Active contributor to open-source projects on GitHub</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modeToggle = document.getElementById('mode-toggle');
+    const body = document.body;
+    const aboutLink = document.getElementById('about-link');
+    const aboutSection = document.getElementById('about-section');
+    const galleryLink = document.getElementById('gallery-link');
+    const gallerySection = document.getElementById('gallery-section');
+    const fullscreenImage = document.querySelector('.fullscreen-image');
+    const fullscreenImageImg = fullscreenImage.querySelector('img');
+    const closeFullscreen = document.querySelector('.close-fullscreen');
+    const prevButton = document.querySelector('.fullscreen-prev');
+    const nextButton = document.querySelector('.fullscreen-next');
+    const fullscreenTitle = document.querySelector('.fullscreen-title');
+
+    modeToggle.addEventListener('click', function() {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        this.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+      } else {
+        this.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+      }
+    });
+
+    aboutLink.addEventListener('click', function() {
+      if (aboutSection.style.display === 'none' || aboutSection.style.display === '') {
+        aboutSection.style.display = 'block';
+        gallerySection.style.display = 'none';
+        aboutLink.innerHTML = '<i class="fas fa-times"></i> Close About';
+        galleryLink.innerHTML = '<i class="fas fa-images"></i> Gallery';
+      } else {
+        aboutSection.style.display = 'none';
+        aboutLink.innerHTML = '<i class="fas fa-user"></i> About Me';
+      }
+    });
+
+    galleryLink.addEventListener('click', function() {
+      if (gallerySection.style.display === 'none' || gallerySection.style.display === '') {
+        gallerySection.style.display = 'block';
+        aboutSection.style.display = 'none';
+        galleryLink.innerHTML = '<i class="fas fa-times"></i> Close Gallery';
+        aboutLink.innerHTML = '<i class="fas fa-user"></i> About Me';
+      } else {
+        gallerySection.style.display = 'none';
+        galleryLink.innerHTML = '<i class="fas fa-images"></i> Gallery';
+      }
+    });
+
+    // Gallery fullscreen functionality
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    let currentImageIndex = 0;
+
+    function showImage(index) {
+      if (index < 0) index = galleryItems.length - 1;
+      if (index >= galleryItems.length) index = 0;
+      currentImageIndex = index;
+      const currentItem = galleryItems[index];
+      const img = currentItem.querySelector('img');
+      const title = currentItem.querySelector('.gallery-item-title').textContent;
+      fullscreenImageImg.src = img.src;
+      fullscreenImageImg.alt = img.alt;
+      fullscreenTitle.textContent = title;
+    }
+
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        showImage(index);
+        fullscreenImage.classList.add('active');
+      });
+    });
+
+    closeFullscreen.addEventListener('click', () => {
+      fullscreenImage.classList.remove('active');
+    });
+
+    fullscreenImage.addEventListener('click', (e) => {
+      if (e.target === fullscreenImage) {
+        fullscreenImage.classList.remove('active');
+      }
+    });
+
+    prevButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showImage(currentImageIndex - 1);
+    });
+
+    nextButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showImage(currentImageIndex + 1);
+    });
+
+    // Interactive project cards
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+      card.addEventListener('mouseover', () => {
+        card.style.transform = 'scale(1.03) rotate(1deg)';
+      });
+      card.addEventListener('mouseout', () => {
+        card.style.transform = 'scale(1) rotate(0deg)';
+      });
+    });
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Keyboard navigation for fullscreen gallery
+    document.addEventListener('keydown', (e) => {
+      if (fullscreenImage.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') {
+          showImage(currentImageIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+          showImage(currentImageIndex + 1);
+        } else if (e.key === 'Escape') {
+          fullscreenImage.classList.remove('active');
+        }
+      }
+    });
+
+    // Lazy loading for gallery images
+    const lazyLoadImages = () => {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+            observer.unobserve(img);
+          }
+        });
+      });
+
+      const imgs = document.querySelectorAll('img.lazy');
+      imgs.forEach(img => {
+        imageObserver.observe(img);
+      });
+    };
+
+    // Call lazy loading function
+    lazyLoadImages();
+  </script>
+</body></html>
