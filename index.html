@@ -404,39 +404,50 @@
   }
 @media (max-width: 768px) {
   body {
-    font-size: 16px;
+    font-size: 18px;
+    text-align: center;
   }
 
   .container {
-    padding: 20px;
+    padding: 20px 10px;
   }
 
   header {
     padding: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    margin-right: 0;
+    margin-bottom: 20px;
   }
 
   h1 {
-    font-size: 2em;
+    font-size: 2.2em;
   }
 
   h2 {
-    font-size: 1.5em;
+    font-size: 1.8em;
   }
 
   .contact-info {
-    font-size: 1em;
+    font-size: 1.1em;
   }
 
   .header-controls {
     flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
   }
 
   .mode-toggle, .about-link, .gallery-link {
     width: 100%;
-    padding: 12px;
-    font-size: 14px;
+    padding: 15px;
+    font-size: 1.2em;
   }
 
   .sidebar, .main-content {
@@ -444,32 +455,32 @@
   }
 
   .section {
-    padding: 20px;
+    padding: 25px;
   }
 
   .skill-bar {
-    height: 30px;
+    height: 35px;
   }
 
   .skill-progress {
-    font-size: 14px;
+    font-size: 1em;
   }
 
   .project-card {
-    padding: 20px;
+    padding: 25px;
   }
 
   .project-title {
-    font-size: 1.2em;
+    font-size: 1.4em;
   }
 
   .project-description {
-    font-size: 0.9em;
+    font-size: 1em;
   }
 
   .interest-item {
-    font-size: 0.9em;
-    padding: 8px 16px;
+    font-size: 1em;
+    padding: 10px 20px;
   }
 
   .gallery-grid {
@@ -477,18 +488,38 @@
   }
 
   .gallery-item img {
-    height: 200px;
+    height: 250px;
   }
 
   .fullscreen-nav {
-    font-size: 24px;
-    width: 40px;
-    height: 40px;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
   }
 
   .fullscreen-title {
-    font-size: 14px;
-    padding: 8px 16px;
+    font-size: 1.1em;
+    padding: 10px 20px;
+  }
+
+  /* Center align list items */
+  ul {
+    padding-left: 0;
+    list-style-position: inside;
+  }
+
+  /* Make buttons more prominent */
+  button, .interest-item {
+    transition: all 0.3s ease;
+  }
+
+  button:hover, .interest-item:hover {
+    transform: scale(1.05);
+  }
+
+  /* Increase spacing between sections */
+  .section {
+    margin-bottom: 40px;
   }
 }
   @media (max-width: 1100px) {
