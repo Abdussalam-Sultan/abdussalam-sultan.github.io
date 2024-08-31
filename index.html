@@ -522,6 +522,16 @@
     margin-bottom: 40px;
   }
 }
+  .section a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.section a:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+}
   @media (max-width: 1100px) {
     .container {
       grid-template-columns: 1fr;
@@ -664,15 +674,18 @@
       </div>
 
       <div class="section">
-        <h2>Certifications</h2>
-        <ul>
-          <li>Foundational C# with Microsoft Developer Certification (September 2023)</li>
-          <ul>
-            <li>Completed approximately 300 hours of work</li>
-          </ul>
-        </ul>
-      </div>
-    </div>
+  <h2>Certifications</h2>
+  <ul>
+    <li>
+      <a href="https://www.freecodecamp.org/certification/fcc498ad55e-aa13-4bdd-ae11-6b10b3411c36/foundational-c-sharp-with-microsoft" target="_blank" rel="noopener noreferrer">
+        Foundational C# with Microsoft Developer Certification (September 2023)
+      </a>
+      <ul>
+        <li>Completed approximately 300 hours of work</li>
+      </ul>
+    </li>
+  </ul>
+</div>
 
     <div class="main-content">
       <div class="section">
