@@ -403,8 +403,6 @@
     transition: all 0.3s ease;
   }
 
-  @media (max-width: 1100px) {
-    .container {
       grid-template-columns: 1fr;
     }
     .main-content {
@@ -412,10 +410,7 @@
     }
   }
 
-  @media (max-width: 600px) {
-    .container {
-      padding: 30px 20px;
-    }
+  
     .section {
       padding: 30px;
     }
@@ -434,7 +429,9 @@
       flex-direction: column;
       align-items: flex-start;
     }
-    
+    .profile-image {
+      margin-right: 0;
+      margin-bottom: 20px;
     }
     .header-content {
       width: 100%;
@@ -447,9 +444,6 @@
       width: 50px;
       height: 50px;
     }
-  .profile-image {
-      margin-right: 0;
-      margin-bottom: 20px;
     .fullscreen-title {
       font-size: 16px;
       padding: 10px 20px;
@@ -461,27 +455,27 @@
 <body>
   <div class="container">
     <header>
-    <img src="https://img.freepik.com/free-photo/crazy-business-afro-american-man-standing-wrinkle-face-pink_155003-6810.jpg?size=626&ext=jpg" alt="Abdussalam Sultan profile picture" class="profile-image" width="120" height="120">
-    <div class="header-content">
-        <h1>Abdussalam Sultan</h1>
-        <div class="contact-info">
-            <p>abdussultan14@gmail.com | Abeokuta, Ogun State, Nigeria</p>
-        </div>
+  <img src="https://img.freepik.com/free-photo/crazy-business-afro-american-man-standing-wrinkle-face-pink_155003-6810.jpg?size=626&ext=jpg" alt="Abdussalam Sultan profile picture" class="profile-image" width="120" height="120">
+  <div class="header-content">
+    <h1>Abdussalam Sultan</h1>
+    <div class="contact-info">
+      <p>abdussultan14@gmail.com | Abeokuta, Ogun State, Nigeria</p>
     </div>
+  </div>
   <div class="header-controls">
-  <button id="about-link" class="about-link">
-    <i class="fas fa-user"></i>
-    About Me
-  </button>
-  <button id="gallery-link" class="gallery-link">
-    <i class="fas fa-images"></i>
-    Gallery
-  </button>
-  <button id="mode-toggle" class="mode-toggle">
-    <i class="fas fa-sun"></i>
-    Light Mode
-  </button>
-</div>
+    <button id="about-link" class="about-link">
+      <i class="fas fa-user"></i>
+      About Me
+    </button>
+    <button id="gallery-link" class="gallery-link">
+      <i class="fas fa-images"></i>
+      Gallery
+    </button>
+    <button id="mode-toggle" class="mode-toggle">
+      <i class="fas fa-sun"></i>
+      Light Mode
+    </button>
+  </div>
 </header>
 
     <div id="about-section" class="section">
@@ -544,15 +538,16 @@
         <p>Expected Graduation: 2030</p>
       </div>
 
-     <div class="section">
-  <h2>Certifications</h2>
-  <ul>
-    <li>Foundational C# with Microsoft Developer Certification (September 2023)</li>
-    <ul>
-      <li>Completed approximately 300 hours of work</li>
-    </ul>
-  </ul>
-</div>
+      <div class="section">
+        <h2>Certifications</h2>
+        <ul>
+          <li>Foundational C# with Microsoft Developer Certification (September 2023)</li>
+          <ul>
+            <li>Completed approximately 300 hours of work</li>
+          </ul>
+        </ul>
+      </div>
+    </div>
 
     <div class="main-content">
       <div class="section">
